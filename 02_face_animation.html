@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanmay Mandal</title>
+
+    <!-- Bootstrap CSS -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    /> -->
+    <!-- fontawsome -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #5d3800;
+      }
+
+      .face {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffcd00;
+        box-shadow: 0 0 120px #ffcd00;
+      }
+
+      .face::before {
+        content: "";
+        top: 180px;
+        width: 150px;
+        height: 70px;
+        position: absolute;
+        background: #b57700;
+        border-bottom-right-radius: 70px;
+        border-bottom-left-radius: 70px;
+        transition: all 0.5s;
+      }
+      .face:hover::before {
+        top: 210px;
+        width: 150px;
+        height: 20px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+      }
+      .eyes {
+        position: relative;
+        top: -40px;
+        display: flex;
+      }
+      .eyes .eye {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        display: block;
+        background: #fff;
+        margin: 0 15px;
+        border-radius: 50%;
+      }
+
+      .eyes .eye::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 25px;
+        width: 40px;
+        height: 40px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="face">
+      <div class="eyes">
+        <div class="eye"></div>
+        <div class="eye"></div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelector("body").addEventListener("mousemove", eyeball);
+      function eyeball() {
+        var eye = document.querySelectorAll(".eye");
+        // console.log(eye);
+        eye.forEach(function (eye) {
+          let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+          let y = eye.getBoundingClientRect().top + eye.clientHeight / 2;
+
+        //   console.log(x)
+          let radian = Math.atan2(event.pageX - x, event.pageY - y);
+          
+        //   console.log("radian value is : " + radian);
+
+          let rot = (radian * (180 / Math.PI) * -1) + 270;
+
+        //   console.log(" rotate vaule is =" + rot);
+
+          eye.style.transform = "rotate(" + rot + "deg)";
+        });
+      }
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script> -->
+
+    <!-- jquery cdn -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+  </body>
+</html>
